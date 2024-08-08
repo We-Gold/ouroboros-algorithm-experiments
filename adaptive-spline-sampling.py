@@ -321,4 +321,4 @@ if __name__ == "__main__":
     plt.show()
 
     # Save the figure
-    fig.savefig("adaptive-spline-sampling.png")
+    fig.savefig("adaptive-spline-sampling.png", dpi=300)
