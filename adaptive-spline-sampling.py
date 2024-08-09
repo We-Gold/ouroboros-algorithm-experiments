@@ -55,7 +55,6 @@ def generate_sample_curve_parabola(start_x=-10, end_x=10, num_points=100) -> np.
     """
     t = np.linspace(start_x, end_x, num_points)
     x = t
-    # y = (t**2) / (end_x - start_x)  # Normalize y to match x scale
     y = (t**2 * np.cos(t)) / (end_x - start_x)  # Normalize y to match x scale
     z = np.zeros_like(t)
 
@@ -135,14 +134,6 @@ def calculate_arc_length(spline: Spline, t: np.ndarray) -> np.ndarray:
     np.ndarray
         The arc length at each point.
     """
-
-    # def arc_length_integrand(t):
-    #     first_derivative = spline(t, derivative=1).T
-    #     return np.linalg.norm(first_derivative, axis=1)
-
-    # arc_length = np.zeros_like(t)
-    # for i in range(1, len(t)):
-    #     arc_length[i] = np.trapz(arc_length_integrand(t[: i + 1]), t[: i + 1])
 
     # Evaluate the B-spline derivative
     dx, dy, dz = spline(t, derivative=1)
